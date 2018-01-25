@@ -53,9 +53,10 @@ def btcheck ( addr ):
     rf.write(str(strength))
     rf.flush()
     rf.close()
-    if strength == 0:
-      return -1
-    if 0 < strength <= 50:
+	# iphone8 differs in BT responses than iphone6...
+    #if strength == 0:
+    #  return -1
+    if 0 <= strength <= 50:
       blinkthread2 = threading.Thread(target=blink, args=(ConnectionLed,3,0.1))
       blinkthread2.daemon = True
       blinkthread2.start()
